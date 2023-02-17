@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Об авторе проекта
+{% endblock title %}
+{% block content %}
+<style>
+  .block1 {
+   height: 350px;
+  }
+  .block2 {
+   height: 350px;.
+  }
+  .block3 {
+   height: 380px;
+  }
+</style>
+<div class="container py-5">
+  <h1>Об авторе проекта</h1><br>
+  <div class="block1">
+    <p>
+    <img src="{% static 'img/about/authorphoto.jpg' %}"
+         style="width:434px; height:300px;"
+         align="left"
+         hspace="30"
+         vspace="15">
+      Даниил, 24 года. Живу в городе Челябинск.<br>
+      Закончил аэрокосмический факультет Южно-Уральского государственного университета
+      по специальности "Проектирование авиационных и ракетных двигателей".<br>
+      В настоящее время обучаюсь на онлайн-курсе "Python-разработчик" от Яндекс Практикум.<br>
+    </p>
+    <h3>Аккаунты в социальных сетях:</h3>
+    <li><a href="https://github.com/DaniilFedotov">GitHub</a></li>
+    <li><a href="https://vk.com/pustovsky">Vk</a></li>
+    <li>Telegram: @FedotovDaniil</li>
+    <li>Instagram: @daniil___fedotov</li>
+  </div>
+  <hr>
+  <div class="block2">
+    <p>
+    <img src="{% static 'img/about/authorfirst.jpg' %}"
+         style="width:387px; height:300px;"
+         align="right"
+         hspace="30"
+         vspace="15">
+    В работе над проектом значительный вклад внес кот по кличке Бакс.
+    Он помогал верстать эту страницу, но, так как у него лапки, это отразилось на ее качестве.
+    </p>
+  </div>
+  <hr>
+  <div class="block3">
+    <p>
+      <img src="{% static 'img/about/authorsecond.jpg' %}"
+           style="width:300px; height:330px;"
+           align="left"
+           hspace="30"
+           vspace="15">
+      Напарник буквально направлял меня и объяснял каждое действие,
+       а в конце работы над данной страницей мы даже поругались, обсуждая чья фотография будет первой.
+    </p>
+  </div>
+</div>
+{% endblock content %}

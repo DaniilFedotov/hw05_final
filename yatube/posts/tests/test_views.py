@@ -355,7 +355,7 @@ class FollowTest(TestCase):
         super().setUpClass()
         cls.author = User.objects.create_user(username='test_author')
         cls.user = User.objects.create_user(username='auth_follower')
-        cls.user_unfollower = User.objects.create_user(username='auth_unfollower')
+        cls.unfollower = User.objects.create_user(username='auth_unfollower')
         cls.post = Post.objects.create(
             text='test-text',
             author=cls.author
@@ -365,7 +365,7 @@ class FollowTest(TestCase):
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
         self.authorized_client_unfollower = Client()
-        self.authorized_client_unfollower.force_login(self.user_unfollower)
+        self.authorized_client_unfollower.force_login(self.unfollower)
 
     def test_profile_follow(self):
         """Авторизованный пользователь может подписываться на
@@ -415,5 +415,3 @@ class FollowTest(TestCase):
             reverse('posts:follow_index')
         )
         self.assertNotIn(self.post, response.context['posts'])
-
-

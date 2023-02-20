@@ -55,6 +55,11 @@ class Group(models.Model):
         verbose_name='Описание группы'
     )
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['slug'], name='slug_idx'),
+        ]
+
     def __str__(self):
         return self.title
 
@@ -97,3 +102,10 @@ class Follow(models.Model):
         related_name='following',
         verbose_name='Автор',
     )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'author'], name='follow_unique'
+            )
+        ]

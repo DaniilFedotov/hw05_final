@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_page
-from .models import Post, Group, User, Comment, Follow
+from .models import Post, Group, User, Follow
 from .forms import PostForm, CommentForm
 from .utilities import get_paginator
 
@@ -37,11 +37,12 @@ def profile(request, username):
     author = get_object_or_404(User, username=username)
     posts = author.posts.all()
     page_obj = get_paginator(posts, request)
-    is_following = True if (request.user.is_authenticated and
-                            Follow.objects.filter(
-                                user=request.user,
-                                author=author,
-                            ).exists()) else False
+
+    is_following = (True if request.user.is_authenticated
+                    and Follow.objects.filter(
+                        user=request.user,
+                        author=author,
+                    ).exists() else False)
     context = {
         'posts': posts,
         'author': author,

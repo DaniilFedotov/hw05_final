@@ -7,16 +7,11 @@ load_dotenv()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-SECRET_KEY = '0im__egk!0$#**s#-izb%^*_05jq(18_pqja$*6fej5-=8)4j@'
+SECRET_KEY = str(os.getenv('SECRET_KEY', default='0im__egk!0$#**s#-izb%^*_05jq(18_pqja$*6fej5-=8)4j@'))
 
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '[::1]',
-    'testserver',
-]
+ALLOWED_HOSTS = str(os.getenv('ALLOWED_HOSTS', default='localhost,127.0.0.1,[::1],testserver')).split(',')
 
 
 INSTALLED_APPS = [
